@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.a.hola.impl.packetBl" activate="activate" deactivate="deactivate">
+    <implementation class="com.a.hola.impl.packetBl"/>
+    <property name="service.pid" value="com.a.hola.impl.packetBl"/>
+    <reference name="cs" interface="com.hp.of.ctl.ControllerService" cardinality="1..1" policy="static" bind="bindCs" unbind="unbindCs"/>
+    <reference name="nd" interface="com.hp.sdn.node.NodeService" cardinality="1..1" policy="static" bind="bindNd" unbind="unbindNd"/>
+    <reference name="ls" interface="com.hp.sdn.link.LinkService" cardinality="1..1" policy="static" bind="bindLs" unbind="unbindLs"/>
+    <reference name="ts" interface="com.hp.sdn.topo.TopologyService" cardinality="1..1" policy="static" bind="bindTs" unbind="unbindTs"/>
+</scr:component>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="com.a.hola.rs.ServiceAssistant">
+    <implementation class="com.a.hola.rs.ServiceAssistant"/>
+    <property name="service.pid" value="com.a.hola.rs.ServiceAssistant"/>
+    <reference name="PHDService" interface="com.a.hola.api.PHDService" cardinality="0..n" policy="dynamic" bind="bindPHDService" unbind="unbindPHDService"/>
+</scr:component>

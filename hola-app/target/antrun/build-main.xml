@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <mkdir dir="target/bundles"/>
+  <copy flatten="true" todir="target/bundles/">
+    <fileset dir="/home/sdn/.m2/repository/com/a/hola/">
+      <include name="hola-model/1.0.0-SNAPSHOT/hola-model-1.0.0-SNAPSHOT.jar"/>
+      <include name="hola-api/1.0.0-SNAPSHOT/hola-api-1.0.0-SNAPSHOT.jar"/>
+      <include name="hola-dao-api/1.0.0-SNAPSHOT/hola-dao-api-1.0.0-SNAPSHOT.jar"/>
+      <include name="hola-bl/1.0.0-SNAPSHOT/hola-bl-1.0.0-SNAPSHOT.jar"/>
+      <include name="hola-dao/1.0.0-SNAPSHOT/hola-dao-1.0.0-SNAPSHOT.jar"/>
+      <include name="hola-rs/1.0.0-SNAPSHOT/hola-rs-1.0.0-SNAPSHOT.war"/>
+      <include name="hola-ui/1.0.0-SNAPSHOT/hola-ui-1.0.0-SNAPSHOT.war"/>
+    </fileset>
+    <fileset includes="hola.descriptor" dir="/home/sdn/Downloads/hp-sdn-sdk-2.7.18/cometogather2/hola-app"/>
+  </copy>
+  <zip basedir="target/bundles" destfile="target/hola-1.0.0-SNAPSHOT.zip"/>
+</target>
+</project>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0" name="com.a.hola.impl.PHDManager">
+    <implementation class="com.a.hola.impl.PHDManager"/>
+    <service servicefactory="false">
+        <provide interface="com.a.hola.api.PHDService"/>
+    </service>
+    <property name="service.pid" value="com.a.hola.impl.PHDManager"/>
+</scr:component>

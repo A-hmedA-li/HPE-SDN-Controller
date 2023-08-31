@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <delete dir="target/classes/rsdoc"/>
+  <mkdir dir="target/classes/rsdoc"/>
+  <exec executable="java">
+    <arg value="-Dapi.name=ahmed v1.0"/>
+    <arg value="-Dapi.version=1.0"/>
+    <arg value="-Dapi.url=https://localhost:8443/sdn/hola/v1.0"/>
+    <arg value="-jar"/>
+    <arg value="/home/sdn/.m2/repository/com/hp/util/hp-util-rsdoc/7.3.11/hp-util-rsdoc-7.3.11.jar"/>
+    <arg value="com/a/hola/rs"/>
+    <arg value="target/classes/rsdoc"/>
+    <arg value="src/main/java"/>
+  </exec>
+</target>
+</project>

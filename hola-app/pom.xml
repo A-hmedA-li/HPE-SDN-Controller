@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.a.hola</groupId>
+        <artifactId>hola-root</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../hola-root/pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>hola-app</artifactId>
+    <packaging>pom</packaging>
+
+    <name>hola-app</name>
+    <description>ahmed - application packaging module</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.a.hola</groupId>
+            <artifactId>hola-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.a.hola</groupId>
+            <artifactId>hola-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.a.hola</groupId>
+            <artifactId>hola-bl</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>package-app</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="target/bundles" />
+
+                                <copy todir="target/bundles/" flatten="true">
+                                    <fileset dir="/home/sdn/.m2/repository/com/a/hola/">
+                                        <include name="hola-model/${project.version}/hola-model-${project.version}.jar"/>
+                                        <include name="hola-api/${project.version}/hola-api-${project.version}.jar"/>
+                                        <include name="hola-dao-api/${project.version}/hola-dao-api-${project.version}.jar"/>
+                                        <include name="hola-bl/${project.version}/hola-bl-${project.version}.jar"/>
+                                        <include name="hola-dao/${project.version}/hola-dao-${project.version}.jar"/>
+                                        <include name="hola-rs/${project.version}/hola-rs-${project.version}.war"/>
+                                        <include name="hola-ui/${project.version}/hola-ui-${project.version}.war"/>
+                                    </fileset>
+                                    <fileset dir="${basedir}" includes="hola.descriptor"/>
+                                </copy>
+
+                                <zip destfile="target/hola-${project.version}.zip" basedir="target/bundles"/>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>
